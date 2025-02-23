@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Your Couple - DP</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="loading">Finding Your Perfect DP Couple...</h1>
+        <div class="dp-container" style="display: none;">
+            <div class="dp-box">
+                <img class="dp-image" id="dp1" alt="DP 1">
+                <a href="#" class="download-btn" id="download1">Download <i class="fas fa-download"></i></a>
+            </div>
+            <div class="dp-box">
+                <img class="dp-image" id="dp2" alt="DP 2">
+                <a href="#" class="download-btn" id="download2">Download <i class="fas fa-download"></i></a>
+            </div>
+        </div>
+        <button class="refresh-btn" id="refreshBtn">
+            <i class="fas fa-sync-alt"></i> Refresh
+        </button>
+    </div>
+
+    <div class="music-player">
+        <button class="play-btn" id="playBtn">
+            <i class="fas fa-play"></i>
+        </button>
+        <audio id="backgroundMusic" loop></audio>
+    </div>
+
+    <div class="footer">
+        Developed by <strong>JackLxproCoder</strong>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
