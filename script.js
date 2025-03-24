@@ -20,7 +20,6 @@ function shuffleArray(array) {
     }
 }
 
-// Initialize music player
 function initMusicPlayer() {
     shuffleArray(songs);
     audio.src = songs[currentSong];
@@ -85,8 +84,8 @@ async function fetchDP() {
             forceDownload(result2, `dp2_${Date.now()}.jpg`);
         });
         
-        document.getElementById('dp1').src = result1;
-        document.getElementById('dp2').src = result2;
+        document.getElementById('dp1').src = male;
+        document.getElementById('dp2').src = female;
 
         document.querySelector('.loading').style.display = 'none';
         document.querySelector('.dp-container').style.display = 'flex';
