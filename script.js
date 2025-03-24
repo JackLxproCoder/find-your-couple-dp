@@ -1,4 +1,4 @@
-const API_URL = 'https://api.zetsu.xyz/cdp';
+const API_URL = 'https://apis-markdevs69v2.onrender.com/api/randomgambar/couplepp';
 const songs = [
     'https://f.top4top.io/m_3335yz9lm1.mp3',
     'https://i.top4top.io/m_3328477of9.mp3',
@@ -26,7 +26,6 @@ function initMusicPlayer() {
     audio.src = songs[currentSong];
     audio.loop = false;
 
-    // Play the next song when the current one ends
     audio.addEventListener('ended', () => {
         currentSong = (currentSong + 1) % songs.length;
         audio.src = songs[currentSong];
@@ -34,7 +33,6 @@ function initMusicPlayer() {
         playBtn.innerHTML = '<i class="fas fa-pause"></i>';
     });
 
-    // Start music on first user interaction
     document.addEventListener('click', function initMusic() {
         if (isFirstPlay) {
             audio.play().catch(() => {});
@@ -45,7 +43,6 @@ function initMusicPlayer() {
     }, { once: true });
 }
 
-// Force download an image
 async function forceDownload(url, filename) {
     try {
         const response = await fetch(url);
@@ -64,7 +61,6 @@ async function forceDownload(url, filename) {
     }
 }
 
-// Fetch and display DP images
 async function fetchDP() {
     try {
         document.querySelector('.loading').style.display = 'block';
@@ -74,13 +70,11 @@ async function fetchDP() {
         const result1 = response.data.result.one;
         const result2 = response.data.result.two;
 
-        // Clear previous click handlers
         const download1 = document.getElementById('download1');
         const download2 = document.getElementById('download2');
         download1.replaceWith(download1.cloneNode(true));
         download2.replaceWith(download2.cloneNode(true));
 
-        // Set new handlers
         document.getElementById('download1').addEventListener('click', (e) => {
             e.preventDefault();
             forceDownload(result1, `dp1_${Date.now()}.jpg`);
@@ -90,8 +84,7 @@ async function fetchDP() {
             e.preventDefault();
             forceDownload(result2, `dp2_${Date.now()}.jpg`);
         });
-
-        // Set image sources
+        
         document.getElementById('dp1').src = result1;
         document.getElementById('dp2').src = result2;
 
@@ -103,7 +96,6 @@ async function fetchDP() {
     }
 }
 
-// Music control
 playBtn.addEventListener('click', () => {
     if (audio.paused) {
         audio.play();
@@ -114,7 +106,6 @@ playBtn.addEventListener('click', () => {
     }
 });
 
-// Initialize
 initMusicPlayer();
 fetchDP();
 document.getElementById('refreshBtn').addEventListener('click', fetchDP);
