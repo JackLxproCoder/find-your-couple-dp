@@ -66,26 +66,32 @@ async function fetchDP() {
         document.querySelector('.dp-container').style.display = 'none';
 
         const response = await axios.get(API_URL);
-        const result1 = response.result.male;
-        const result2 = response.result.female;
+        // Corrected data access from response
+        const result1 = response.data.result.male;  // Changed to response.data
+        const result2 = response.data.result.female; // Changed to response.data
 
+        // Refresh download buttons
         const download1 = document.getElementById('download1');
         const download2 = document.getElementById('download2');
-        download1.replaceWith(download1.cloneNode(true));
-        download2.replaceWith(download2.cloneNode(true));
+        const newDownload1 = download1.cloneNode(true);
+        const newDownload2 = download2.cloneNode(true);
+        download1.replaceWith(newDownload1);
+        download2.replaceWith(newDownload2);
 
-        document.getElementById('download1').addEventListener('click', (e) => {
+        // Add event listeners to new buttons
+        newDownload1.addEventListener('click', (e) => {
             e.preventDefault();
-            forceDownload(result1, `dp1_${Date.now()}.jpg`);
+            forceDownload(result1, `couple-male-${Date.now()}.jpg`);
         });
 
-        document.getElementById('download2').addEventListener('click', (e) => {
+        newDownload2.addEventListener('click', (e) => {
             e.preventDefault();
-            forceDownload(result2, `dp2_${Date.now()}.jpg`);
+            forceDownload(result2, `couple-female-${Date.now()}.jpg`);
         });
         
-        document.getElementById('dp1').src = male;
-        document.getElementById('dp2').src = female;
+        // Update image sources with correct variables
+        document.getElementById('dp1').src = result1;  // Fixed variable name
+        document.getElementById('dp2').src = result2;  // Fixed variable name
 
         document.querySelector('.loading').style.display = 'none';
         document.querySelector('.dp-container').style.display = 'flex';
