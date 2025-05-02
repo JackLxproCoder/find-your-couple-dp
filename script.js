@@ -12,6 +12,7 @@ let isFirstPlay = true;
 const audio = document.getElementById('backgroundMusic');
 const playBtn = document.getElementById('playBtn');
 
+// Shuffle songs array
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -65,32 +66,26 @@ async function fetchDP() {
         document.querySelector('.dp-container').style.display = 'none';
 
         const response = await axios.get(API_URL);
-        // Corrected data access from response
-        const male = response.data.result.male;  // Changed to response.data
-        const female = response.data.result.female; // Changed to response.data
+        const result1 = response.data.result.male;
+        const result2 = response.data.result.female;
 
-        // Refresh download buttons
         const download1 = document.getElementById('download1');
         const download2 = document.getElementById('download2');
-        const newDownload1 = download1.cloneNode(true);
-        const newDownload2 = download2.cloneNode(true);
-        download1.replaceWith(newDownload1);
-        download2.replaceWith(newDownload2);
+        download1.replaceWith(download1.cloneNode(true));
+        download2.replaceWith(download2.cloneNode(true));
 
-        // Add event listeners to new buttons
-        newDownload1.addEventListener('click', (e) => {
+        document.getElementById('download1').addEventListener('click', (e) => {
             e.preventDefault();
-            forceDownload(male, `couple-male-${Date.now()}.jpg`);
+            forceDownload(result1, `dp1_${Date.now()}.jpg`);
         });
 
-        newDownload2.addEventListener('click', (e) => {
+        document.getElementById('download2').addEventListener('click', (e) => {
             e.preventDefault();
-            forceDownload(female, `couple-female-${Date.now()}.jpg`);
+            forceDownload(result2, `dp2_${Date.now()}.jpg`);
         });
         
-        // Update image sources with correct variables
-        document.getElementById('dp1').src = male;  // Fixed variable name
-        document.getElementById('dp2').src = female;  // Fixed variable name
+        document.getElementById('dp1').src = male;
+        document.getElementById('dp2').src = female;
 
         document.querySelector('.loading').style.display = 'none';
         document.querySelector('.dp-container').style.display = 'flex';
