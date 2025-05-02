@@ -66,8 +66,8 @@ async function fetchDP() {
 
         const response = await axios.get(API_URL);
         // Corrected data access from response
-        const result1 = response.data.result.male;  // Changed to response.data
-        const result2 = response.data.result.female; // Changed to response.data
+        const male = response.data.result.male;  // Changed to response.data
+        const female = response.data.result.female; // Changed to response.data
 
         // Refresh download buttons
         const download1 = document.getElementById('download1');
