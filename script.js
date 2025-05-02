@@ -80,17 +80,17 @@ async function fetchDP() {
         // Add event listeners to new buttons
         newDownload1.addEventListener('click', (e) => {
             e.preventDefault();
-            forceDownload(result1, `couple-male-${Date.now()}.jpg`);
+            forceDownload(male, `couple-male-${Date.now()}.jpg`);
         });
 
         newDownload2.addEventListener('click', (e) => {
             e.preventDefault();
-            forceDownload(result2, `couple-female-${Date.now()}.jpg`);
+            forceDownload(female, `couple-female-${Date.now()}.jpg`);
         });
         
         // Update image sources with correct variables
-        document.getElementById('dp1').src = result1;  // Fixed variable name
-        document.getElementById('dp2').src = result2;  // Fixed variable name
+        document.getElementById('dp1').src = male;  // Fixed variable name
+        document.getElementById('dp2').src = female;  // Fixed variable name
 
         document.querySelector('.loading').style.display = 'none';
         document.querySelector('.dp-container').style.display = 'flex';
