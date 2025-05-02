@@ -12,7 +12,6 @@ let isFirstPlay = true;
 const audio = document.getElementById('backgroundMusic');
 const playBtn = document.getElementById('playBtn');
 
-// Shuffle songs array
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -67,8 +66,8 @@ async function fetchDP() {
 
         const response = await axios.get(API_URL);
         // Corrected data access from response
-        const result1 = response.data.result.male;  // Changed to response.data
-        const result2 = response.data.result.female; // Changed to response.data
+        const result1 = response.result.male;  // Changed to response.data
+        const result2 = response.result.female; // Changed to response.data
 
         // Refresh download buttons
         const download1 = document.getElementById('download1');
