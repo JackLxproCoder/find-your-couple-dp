@@ -66,8 +66,8 @@ async function fetchDP() {
         document.querySelector('.dp-container').style.display = 'none';
 
         const response = await axios.get(API_URL);
-        const result1 = response.data.result.male;
-        const result2 = response.data.result.female;
+        const result1 = response.result.male;
+        const result2 = response.result.female;
 
         const download1 = document.getElementById('download1');
         const download2 = document.getElementById('download2');
